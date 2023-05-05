@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p{
+        background-color: aqua;
+    }
+    .dong0{
+        display:flex;
+        position: relative;
+        justify-content: space-around;
+display:grid;
+grid-template-columns: auto auto auto auto auto;
+
+    }
+    .dong1{
+        display:flex;
+        position: relative;
+        justify-content: space-around;
+display:grid;
+grid-template-columns: auto auto auto auto;
+
+
+    }
+    .abc{
+        background-color: aliceblue;
+    }
+</style>
+<body style="background-image: url('https://vapa.vn/wp-content/uploads/2022/12/anh-dep-lam-hinh-nen-002.jpg');">
+    
+    <script>
+        let canh1;
+        let canh="<div class=dong0>";
+        for(j=2;j<=6;j++){
+            canh=canh+"<div class=abc>";
+        for(i=1;i<=10;i++){
+canh1 =j + " x " +i +"=" + j*i;
+canh=canh+"<div>"+ canh1 +"</div>";
+        }
+        canh=canh+"</div>";
+        }
+        canh=canh+"</div>";
+
+
+        let canh2;
+        let canh3="<div class=dong1>";
+        for(j=7;j<=10;j++){
+            canh3=canh3+"<div class=abc>";
+        for(i=1;i<=10;i++){
+canh2 =j + " x " +i +"=" + j*i;
+canh3=canh3+"<div>"+ canh2 +"</div>";
+        }
+        canh3=canh3+"</div>";
+        }
+        canh3=canh3+"</div>";
+        document.write(canh)
+        document.write(canh3)
+
+    </script>
+</body>
+</html>
