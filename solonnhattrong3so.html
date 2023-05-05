@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button{
+margin-top:10px;
+    }
+    p{margin:10px auto 10px 0}
+    input{margin:0px;}
+</style>
+
+<body>
+    <div>
+        <p style="margin:0px auto 0px 0px">Tìm Số Lớn Nhất Trong 3 Số</p><br>
+        <p style="margin:0px auto 0px 0px">Nhập vào số a</p><br>
+        <input style="margin:0px auto 0px 0px" id="soa" type="number"><br>
+        <p style="margin:0px auto 0px 0px">Nhập vào số b</p><br>
+        <input id="sob" type="number"><br>
+        <p style="margin:0px auto 0px 0px">Nhập vào số c</p><br>
+        <input style="margin:0px auto 0px 0px" id="soc" type="number"><br>
+        <button  onclick="findMax()">Tính</button>
+        <p style="margin:0px auto 0px 0px" id="kq"></p>
+
+
+    </div>
+    <script>
+        function findMax() {
+
+            let b = parseInt(document.getElementById("sob").value);
+            let c = parseInt(document.getElementById("soc").value);
+            let a = parseInt(document.getElementById("soa").value);
+            let max=0;
+            if (a > max) {
+                max = a;
+            }
+            if (b > max) {
+                max = b;
+            }
+            if (c > max) {
+                max = c;
+            }
+            if (max==a&&max==c&&max==b){
+            document.getElementById("kq").innerHTML = `Số lớn nhất là a ${max} và b ${max} và c ${max}` ;}
+            else
+            if (max==a&&max==b){
+            document.getElementById("kq").innerHTML = `Số lớn nhất là a ${max} và b ${max}` ;}
+            else if (max==a&&max==c){
+            document.getElementById("kq").innerHTML = `Số lớn nhất là a ${max} và c ${max}` ;}
+            else if (max==b&&max==c){
+            document.getElementById("kq").innerHTML = `Số lớn nhất là b ${max} và c ${max}` ;}
+            else if (max==b){
+            document.getElementById("kq").innerHTML = `Số lớn nhất là b ${max}` ;}
+            else if (max==c){
+            document.getElementById("kq").innerHTML = `Số lớn nhất là c ${max}` ;}
+            else if (max==a){
+            document.getElementById("kq").innerHTML = `Số lớn nhất là a ${max}` ;}
+
+
+        }
+    </script>
+</body>
+
+</html>
