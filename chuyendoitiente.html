@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{margin:0;
+padding:0}
+    [class*="col-"] {
+        float: left;
+    }
+    .row-1{
+        margin-top:20px;
+        background-color: aqua;
+    }
+    .row-2{
+        clear:both;
+        background-color: aqua;
+    }
+    .col-1{width:20%};
+    .col2{width:20%;};
+
+    
+</style>
+
+<body>
+    <h2>Chuyển đổi tiền tệ</h2>
+<div class="col-1 row-1">
+    <p>Nhập số lượng:</p>
+    <input type="number" id="money">
+</div>
+
+<div class="col-1 row-1">
+    <div>From Currency</div>
+    <select>
+        <option id="vietNam">Viet Nam Dong</option>
+    </select>
+</div>
+
+<div class="col-1 row-1">
+    <div>To Currency</div>
+    <select>
+        <option id="usd">USD</option>
+    </select>
+</div>
+    
+    <div class="col-1 row-1">
+    <button onclick="convert()">Chuyển đổi</button>
+    <div>&nbsp</div>
+</div>
+
+<div class="col-1 row-2">
+<p  id="result"></p>
+
+</div>
+
+
+    <script>
+        function convert() {
+            var money = document.getElementById("money").value;
+           var chuyenDoi = money/25000;
+            document.getElementById("result").innerHTML = chuyenDoi + " USD";
+        }
+
+
+
+// let ly= +prompt("Nhập điểm Lý");
+// let hoa= +prompt("Nhập điểm Hoá");
+// let sinh= +prompt("Nhập điểm Sinh");
+// let diemTrungBinh=(ly+hoa+sinh)/3;
+// if(ly>10 || hoa>10 || sinh>10){document.write("Dữ liệu không đúng")}
+// else if(ly>=0&&ly<=10&&hoa>=0&&sinh<=10){
+// document.write("Điểm Lý " + `${ly}` + "<br>");
+// document.write("Điểm Hoá " + `${hoa}`+ "<br>");
+// document.write("Điểm Sinh " + `${sinh}`+ "<br>");
+// document.write("Điểm Trung Bình " +`${diemTrungBinh}`);
+// } else 
+// document.write("Dữ Liệu Sai");
+
+// //bài 2
+// let doC = +prompt("Nhập Vào Độ C");
+// let doF = doC/5*9+32;
+// document.write("Độ C bạn nhập Là :" +`${doC}`+ " Độ "+"C"+"<br>");
+// document.write("Độ F là :" +`${doF}`+ " Độ "+"F"+"<br>");
+
+
+
+
+// //bài 3
+// let banKinh = +prompt("Nhập Vào Bán kính");
+// let dienTich = (`${banKinh}`**2)*3.14;
+// document.write("Diện Tích Hình Tròn Là :" + `${dienTich}`);
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
