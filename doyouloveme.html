@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1 {
+            position: absolute;
+            left: 220px;
+            top: 175px
+        }
+    </style>
+</head>
+<body>
+<h1>Do you love me?</h1>
+<input style="position:absolute;left: 285px;top:235px;" type="button" value="Yes" onclick="yesButton()">
+<input style="position:absolute;left: 360px;top:235px;" id="btnNo" type="button" value="  No  " onmouseover="noHover()">
+
+
+<script>
+    function yesButton() {
+        document.write("I LOVE YOU TOO!");
+    }
+
+    function noHover() {
+        let x = Math.round(Math.random() * window.innerWidth);
+        let y = Math.round(Math.random() * window.innerHeight);
+        document.getElementById("btnNo").style.left = x + 'px';
+        console.log(btnNo)
+        console.log(window.innerWidth)
+
+        document.getElementById("btnNo").style.top = y + 'px';
+        let z = Math.round(Math.random()*5);
+        console.log(z);
+        if(z>2){
+        document.getElementById("btnNo").value ="Đố Anh Bắt Được iem";
+        console.log(btnNo)}else {document.getElementById("btnNo").value ="Không Bắt Được Làm Choá";}
+
+    }
+</script>
+</body>
+</html>
