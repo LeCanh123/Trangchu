@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let sotien = 1000000;
+        let sothang = 36 //số tháng cho vay
+        let laisuat = 1 //lãi suất
+        var tong = 0;
+        let tienlai = 0;
+
+        tong = sotien + (sotien / 100);
+                document.write("Số Tiền gửi Ban Đầu:"+sotien+"<br>")
+        for (i = 1; i < sothang; i++) {
+            if (i == 1) {
+                document.write('Sau Tháng ' + i + " số tiền Là :" + tong + "<br>")
+            } else {
+                tong = Math.round(tong + (tong /100)) ;
+                document.write('Sau Tháng ' + i + " số tiền Là :" + tong + "<br>")
+            }
+        }
+    </script>
+</body>
+
+</html>
+<!-- 
+1000000 +1000000*0.01
+(1000000 +1000000*0.01)+(1000000 +1000000*0.01)*0.01 -->
