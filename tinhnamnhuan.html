@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Tính Năm Nhuận</p>
+    <p>Nhập năm vào</p>
+    <input id="nhap" type="number" length="100">
+    <button onclick="tinh()">Tinh</button>
+    <p id="kq"></p>
+    <script>
+        function tinh() {
+            let a = document.getElementById("nhap").value;
+            if (a % 4 == 0) {
+                console.log(a % 4);
+                if (a % 100 != 0) {
+                    console.log(a % 100);
+
+                    document.getElementById("kq").innerHTML = a + " La Nam Nhuan";
+                }
+                else if (a % 400 == 0) {
+                    console.log(a % 400);
+
+                    document.getElementById("kq").innerHTML = a + "  La Nam Nhuan";
+                }
+                else { document.getElementById("kq").innerHTML = a + " Khong Phai La Nam Nhuan"; }
+            }
+            else {
+                document.getElementById("kq").innerHTML = a + " Khong Phai La Nam Nhuan"
+            }
+        }
+
+    </script>
+</body>
+
+</html>
