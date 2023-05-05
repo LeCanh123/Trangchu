@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Bạn Muốn Xem Bảng Cửu Chương Mấy</p>
+  <input type="number" id="so">
+  <button onclick="tinh()">Xem</button>
+  <p id="result0"></p>
+  <p id="result1"></p>
+  <p id="result2"></p>
+  <p id="result3"></p>
+  <p id="result4"></p>
+  <p id="result5"></p>
+  <p id="result6"></p>
+  <p id="result7"></p>
+  <p id="result8"></p>
+  <p id="result9"></p>
+  <p id="result10"></p>
+
+  <script>
+function tinh(){
+  var sonhap = document.getElementById("so").value;
+ 
+    // document.write(sonhap + "x" +i +"=" + sonhap*i+"<br>")}
+  var result;
+  for(i=0;i<10;i++){
+    document.getElementById("result"+i).innerHTML=sonhap + " x " +i +" = " + sonhap*i+"<br>";
+  }
+}
+  </script>
+</body>
+</html>
