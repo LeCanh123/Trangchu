@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    [class*="col-"] {
+  float: left;
+  padding: 15px;
+  margin-left:400px;
+}
+    body{
+        margin:auto;
+    }
+    #mautieude{
+background-color: coral;"
+}
+.mauphantu{
+background-color: #0099cc;
+
+}
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+</style>
+<body>
+
+    <p class="col-6" id="mautieude" style="font-size: 20px;">
+Viết chương trình nhập vào một số bất kỳ lớn hơn 0. Tính tổng các phần tử từ
+1 đến số vừa nhập vào.
+    </p>
+
+    <pre class="col-6 mauphantu" style="font-size: 20px;">
+let num = prompt("Enter your number: ");
+let total = 0;
+let i = 1;
+for (; i <= num; i +=1) {
+total = total + i;
+}
+alert(total);
+</pre>
+
+</body>
+
+</html>
