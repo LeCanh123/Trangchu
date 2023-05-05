@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="docReady()">
+    <div>
+        <img id="coffin_dance" src="https://inkythuatso.com/uploads/thumbnails/800/2022/05/6-hinh-nen-dien-thoai-nhe-nhanh-inkythuatso-19-16-30-53.jpg"
+ style="position:absolute;left:0; top:0;" height="100" width="80"/>
+    </div>
+
+    <script>
+        function upArrowPressed() {
+   let element = document.getElementById("coffin_dance");
+   element.style.top = parseInt(element.style.top) - 5 + 'px';
+}
+function downArrowPressed() {
+   let element = document.getElementById("coffin_dance");
+   element.style.top = parseInt(element.style.top) + 5 + 'px';
+}
+function leftArrowPressed() {
+   let element = document.getElementById("coffin_dance");
+   element.style.left = parseInt(element.style.left) - 5 + 'px';
+}
+function rightArrowPressed() {
+   let element = document.getElementById("coffin_dance");
+   element.style.left = parseInt(element.style.left) + 5 + 'px';
+}
+
+function aa(abcd) {
+   switch (abcd.keyCode) {
+       case 37:
+           leftArrowPressed();
+           console.log(abcd.keyCode);
+           break;
+       case 39:
+           rightArrowPressed();
+           console.log(abcd.keyCode);
+           break;
+       case 38:
+           upArrowPressed();
+           console.log(abcd.keyCode);
+           break;
+       case 40:
+           downArrowPressed();
+           console.log(abcd.keyCode);
+           break;
+           default:
+           console.log(abcd.keyCode);
+   }
+   console.log(abcd.keyCode);
+}
+function docReady() {
+   window.addEventListener('keydown', aa);
+}
+
+    </script>
+</body>
+</html>
