@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+p,input{
+    margin-top:0px;
+
+}
+</style>
+<body>
+<div class="kcach">
+    <p>Giải Phương Trình Bậc 2:Ax<sup>2</sup> +Bx + C = 0</p>
+    <p>Nhập Vào Số A</p><br>
+    <input class="kcach" id ="soa" type="number"><br>
+    <p>Nhập Vào Số B</p><br>
+    <input id ="sob" type="number"><br>
+    <p>Nhập Vào Số C</p><br>
+    <input id ="soc" type="number"><br>
+<button onclick="chay()">Kết quả</button><br>
+<p id="kq"></p>
+</div>
+
+
+
+    <script>
+
+        function chay(){
+        // program to solve quadratic equation
+let root1, root2;
+
+// take input from the user
+let a = document.getElementById("soa").value;
+let b = document.getElementById("sob").value;
+let c = document.getElementById("soc").value;
+
+// calculate discriminant
+let discriminant = b * b - 4 * a * c;
+
+// condition for real and different roots
+if (discriminant > 0) {
+    root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+    root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+
+    // result
+    document.getElementById("kq").innerHTML=`Phương trình có 2 nghiệm là x1= ${root1} và x2=  ${root2}`
+    
+}
+
+// condition for real and equal roots
+else if (discriminant == 0) {
+    root1 = root2 = -b / (2 * a);
+
+    // result
+    document.getElementById("kq").innerHTML=`Phương trình có 2 nghiệm bằng nhau là x1= x2=  ${root1}`
+}
+
+// if roots are not real
+else {document.getElementById("kq").innerHTML="Phương trình vô nghiệm"}
+}
+    </script>
+</body>
+</html>
