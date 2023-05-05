@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{margin:200px auto 0 700px;}
+</style>
+<body>
+    <div style="">
+<input id="ngon" min="0" max="5" type="range" onclick="ngon()"><br>
+<input id="re" min="0" max="5" type="range" onclick="re()"><br>
+<input id="nhanh" min="0" max="5" type="range" onclick="nhanh()"><br>
+</div>
+</body>
+</html>
+<script>
+    let ngon1 = false;
+    let re1 = false;
+    let nhanh1 = false;
+
+    function ngon() {
+       ngon1 = !ngon1
+        if (ngon1) {
+            document.getElementById('ngon').value = 5
+            if(re1&&nhanh1){
+                document.getElementById('nhanh').value = 0;
+                nhanh1 = false;
+            }
+        } else {
+            document.getElementById('ngon').value = 0
+        }
+        console.log('ngon = ', ngon1)
+    }
+
+    function re(){
+        re1 = !re1
+if(re1){
+    document.getElementById('re').value = 5
+    if(nhanh1&&ngon1){
+        document.getElementById('nhanh').value = 0;
+nhanh1=false;
+    }
+
+}else { document.getElementById('re').value = 0}
+
+    }
+
+    function nhanh(){
+        nhanh1 = !nhanh1
+if(nhanh1){
+    document.getElementById('nhanh').value = 5
+    if(ngon1&&re1){
+        document.getElementById('re').value = 0;
+re1=false;
+    }
+
+}else { document.getElementById('nhanh').value = 0}
+
+    }
+   
+
+        
+  
+</script>

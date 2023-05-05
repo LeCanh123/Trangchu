@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 20px auto 0 500px
+    }
+
+    input {
+        width: 50px;
+    }
+</style>
+
+<body>
+    <div>
+        <p>ngon</p>
+        <input type="range" id="ngon" min="0" max="5" value="5" onclick="ngon2()"><br>
+        <p>nhanh</p>
+
+        <input type="range" id="nhanh" min="0" max="5" value="5" onclick="nhanh2()"><br>
+        <p>re</p>
+
+        <input type="range" id="re" min="0" max="5" value="5" onclick="re2()"><br>
+
+    </div>
+    <script>
+        let ngon1 = false;
+        let nhanh1 = false;
+        let re1 = false;
+
+        function ngon2() {
+            ngon1 = !ngon1
+            if (ngon1) {
+                document.getElementById("ngon").value = 0;
+                if(nhanh1&&re1){document.getElementById("nhanh").value = 5;
+            nhanh1=false;}
+            }
+            else {
+                document.getElementById("ngon").value = 5;
+            }
+        console.log(ngon1);
+
+        }
+
+
+        function nhanh2() {
+            nhanh1 = !nhanh1
+            if (nhanh1) {
+                document.getElementById("nhanh").value = 0;
+                if(ngon1&&re1){document.getElementById("re").value = 5;
+            re1=false;}
+            }
+            else {
+                document.getElementById("nhanh").value = 5;
+              
+
+            }
+        }
+
+
+        function re2() {
+            re1 = !re1
+            if (re1) {
+                document.getElementById("re").value = 0;
+                if(ngon1&&nhanh1){document.getElementById("ngon").value = 5;
+            ngon1=false;}}
+            else {
+                document.getElementById("re").value = 5;
+        
+
+            }
+            console.log(re1)
+        }
+    
+
+    </script>
+</body>
+
+</html>
