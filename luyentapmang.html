@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<p>Nhấn Ctr+U để xem</p>
+    <script>
+        // forEch() duyệt qua phần tử của mảng
+        // every() kiểm tra điều kiện trên toàn bộ mảng trả về true false ,toàn bộ phải đúng mới trả về true
+        // some() kiểm tra điều kiện trên toàn bộ mảng trả về true false ,chỉ cần 1 điều kiện đúng trả về true
+        // find() tìm 1 phần tử có trong mảng hay không ,chỉ hiển thị phần tử có chứa đầu tiên
+        // filter() tìm 1 phần tử có trong mảng hay không hiển thị tất cả các phần tử có chứa điều kiện tìm
+        // map()
+        // reduce()
+
+        var courses = [
+            {
+                id: 1,
+                name: 'Javascript',
+                coin: 250,
+            },
+            {
+                id: 2,
+                name: 'Html,CSS',
+                coin: 0,
+            },
+            {
+                id: 3,
+                name: 'Ruby',
+                coin: 0,
+            },
+            {
+                id: 4,
+                name: 'PHP',
+                coin: 400,
+            },
+            {
+                id: 5,
+                name: 'ReactJS',
+                coin: 500,
+            },
+        ]
+        //sử dụng forEach
+        courses.forEach(function (abc, index) {
+            console.log(index, abc)
+        })
+
+        //sử dụng every
+        //cách sử dụng giống vòng lặp
+        //every lặp qua từng phần tử của mảng
+        //mỗi vòng lặp sẽ gọi lại hàm function(abc,index)
+        //tham số abc sẽ truyền vào phần tử của mảng
+        //sau đó so sánh abc
+        //điều kiện đúng mới chạy tiếp
+        var Isfree = courses.every(function (abc, index) {
+            return abc.coin === 0;
+        })
+        console.log(IsFree)
+
+        //sử dụng some()
+        var Isfree = courses.some(function (abc, index) {
+            return abc.coin === 0;
+        })
+        console.log(IsFree)
+
+
+        // sử dụng find()
+        //Tìm xem có khoá học nào có tên Ruby hay không
+        //khi thấy phần tử có chứa Ruby sẽ gán ngược phần tư đó vào biến IsFree
+        //khi thấy phần tử thoả mãn sẽ dừng lại không tìm phần tử tiếp theo;
+        var Isfree = courses.find(function (abc, index) {
+            return abc.name === 'Ruby';
+        })
+        console.log(IsFree)
+
+        // filter()
+        //Tìm xem có khoá học nào có tên Ruby hay không
+        //khi thấy phần tử có chứa Ruby sẽ gán ngược phần tư đó vào biến IsFree
+       //khi thấy phần tử thoả mãn sẽ tìm phần tử tiếp theo và hiển thị tất cả;
+        var Isfree = courses.filter(function (abc, index) {
+            return abc.name === 'Ruby';
+        })
+        console.log(IsFree)
+
+        // map()
+        // reduce()
+
+    </script>
+</body>
+
+</html>
