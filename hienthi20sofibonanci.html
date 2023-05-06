@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>Hiển thị ra 20 số trong dãy fibonacci đầu tiên.</p>
+        <p>Nhập số lượng fibonanci bạn cần hiện ra</p>
+        <input type="text" id="socanlay"><br>
+        <button onclick="tinh()">Tính</button>
+        <p id="ketqua0"></p>
+        <p id="ketqua1"></p>
+
+    </div>
+
+    <script>
+        let a=0;
+        let b=1;
+        let c=0;
+        let d="";
+        function tinh(){
+        // document.write(a+"<br>")
+        let socanlay=document.getElementById("socanlay").value;
+        
+        for(i=1;i<socanlay;i++){
+            c=a+b;
+            a=b;
+            b=c;
+            d=d+a+"<br>"
+            document.getElementById("ketqua1").innerHTML=d;
+            document.getElementById("ketqua0").innerHTML=0;
+
+        }
+    }
+    </script>
+</body>
+</html>
