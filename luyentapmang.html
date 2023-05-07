@@ -9,15 +9,15 @@
 </head>
 
 <body>
-<p>Nhấn Ctr+U để xem</p>
+    <p>Nhấn Ctr+U để xem</p>
     <script>
-        // forEch() duyệt qua phần tử của mảng
-        // every() kiểm tra điều kiện trên toàn bộ mảng trả về true false ,toàn bộ phải đúng mới trả về true
-        // some() kiểm tra điều kiện trên toàn bộ mảng trả về true false ,chỉ cần 1 điều kiện đúng trả về true
-        // find() tìm 1 phần tử có trong mảng hay không ,chỉ hiển thị phần tử có chứa đầu tiên
-        // filter() tìm 1 phần tử có trong mảng hay không hiển thị tất cả các phần tử có chứa điều kiện tìm
-        // map()
-        // reduce()
+        //1 forEch() duyệt qua phần tử của mảng
+        //2 every() kiểm tra điều kiện trên toàn bộ mảng trả về true false ,toàn bộ phải đúng mới trả về true
+        //3 some() kiểm tra điều kiện trên toàn bộ mảng trả về true false ,chỉ cần 1 điều kiện đúng trả về true
+        //4 find() tìm 1 phần tử có trong mảng hay không ,chỉ hiển thị phần tử  đầu tiên có chứa nó
+        //5 filter() tìm 1 phần tử có trong mảng hay không hiển thị tất cả các phần tử có chứa điều kiện tìm
+        //6 map() thay đổi hoặc thêm nội dung vào phần tử
+        //7 reduce() để lấy tổng số coin của phần tử
 
         var courses = [
             {
@@ -82,15 +82,60 @@
         // filter()
         //Tìm xem có khoá học nào có tên Ruby hay không
         //khi thấy phần tử có chứa Ruby sẽ gán ngược phần tư đó vào biến IsFree
-       //khi thấy phần tử thoả mãn sẽ tìm phần tử tiếp theo và hiển thị tất cả;
+        //khi thấy phần tử thoả mãn sẽ tìm phần tử tiếp theo và hiển thị tất cả;
         var Isfree = courses.filter(function (abc, index) {
             return abc.name === 'Ruby';
         })
         console.log(IsFree)
 
         // map()
-        // reduce()
+        var abc = courses.map(function (aab) {
+            console.log(aab)//aab sẽ là 6 phần tử của mảng courses do map lặp lại và truyền vào lại biến aab
+        });
 
+        //ví dụ về map
+        function aab(abc) {
+            return 123;
+        }
+        var abcd = courses.map(aab);
+        console.log(abcd) //sẽ trả về giá trị return của function aab
+
+        // ví dụ 2 về map
+        function aab(abc, index, originArray) {//index là key có khai báo không cũng 
+            //được originArray chính là courses.map trả về 7 cái array
+            return {
+                id: abc.id,
+                name: `Khoa hoc:${abc.name}`,//thêm chữ khoá học trước name
+                coin: abc.coin,
+                cointext: `Gia: ${abc.coin}`,//thêm giá trước coin
+                index: index,//index là key có khai báo không cũng được
+            }
+        }
+        var abcd = courses.map(aab);
+        console.log(abcd)
+
+
+
+        // reduce()để lấy tổng số coin của phần tử
+        //nếu không dùng reduce dùng for sẽ là
+        var totalCoin = 0;
+        for (var abc of courses) {
+            totalCoin += abc.coin;
+        }
+        console.log(totalCoin);
+        //dùng reduce()
+        function tinhcoin(accumulator, currentValue, currentIndex) {//accumulator là biến lưu trũ chính 
+            //là số 0 ở bên dưới,currentValue là giá trị hiện tại,currentIndex là index hiện tại của currentValue
+            //ở vòng lặp thứ 2 accumulator là giá trị của function tinhcoin( return về
+            return accumulator + currentValue.coin;
+        };
+        var totalCoin = courses.reduce(tinhcoin, 0)//0 là giá trị lưu trữ ban đầu của reduce
+        //tính coin bằng reduce
+        function tinhcoin(accumulator, currentValue, currentIndex) {
+            return accumulator + currentValue.coin;
+        };
+        var totalCoin = courses.reduce(tinhcoin, 0);
+        console.log(totalCoin)
     </script>
 </body>
 
