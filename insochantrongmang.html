@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var listNumber = [5, 8, 9, 7, 8, 25, 87, 55,55];
+        var kq=[];
+        var solonnhat=[];
+        var max = 0;
+        var tong=0;
+        var vitri=0;
+        //in ra các số chẵn trong mảng
+        listNumber.forEach(function abc(a){
+            
+            if(a%2==0){
+               kq.push(a);
+              
+            }
+            
+        });
+        console.log(kq);
+
+        //tìm giá trị lớn nhất in ra vị trí của nó trong mảng
+        listNumber.forEach(function abc(a,b){
+            
+            if(max>a){
+               solonnhat[0]=max;
+              
+            }else{max=a;vitri=b}
+            
+        });
+        console.log("Giá Trị lớn nhất"+max,"Vị Trí của giá trị lớn nhất"+vitri);
+        //tính tổng mảng 
+        listNumber.forEach(function abc(a){
+            tong=tong+a  
+        });
+        console.log("Tổng của mảng:" +tong);
+
+
+        //sắp xếp các phần tử trong mảng theo thứ tự tăng dần
+        // [5,5, 8, 9, 7, 8, 25, 87, 55,55];
+        for(i=0;i<listNumber.length-1;i++){
+            for(j=i+1;j<listNumber.length;j++){
+                if(listNumber[i]>listNumber[j]){
+                    var luu=listNumber[i];
+                    listNumber[i]=j;
+                    listNumber[j]=luu;
+                }
+            }
+        }
+        console.log(listNumber)
+
+        //loại bỏ những phần tử chia hết cho 5 trong mảng
+        // [5,5, 8, 9, 7, 8, 25, 87, 55,55];
+        for(let index=0;index<listNumber.length;index++){
+            if(listNumber[index]%5==0){
+                listNumber.splice(index,1)
+                index--;
+            }
+        }
+        console.log(listNumber)
+
+
+        let listNumbers = [5,8,9,7,8,40,50,25,87,55];
+          let newArray=[];
+        
+            for (let index = 0; index < listNumbers.length; index++) {
+                if (listNumbers[index]%5!==0) {
+                    newArray.push(listNumbers[index])
+                }
+              }
+              console.log(newArray);
+
+
+
+    </script>
+</body>
+
+</html>
