@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let englishWords = ["hello", "world", "goodbye"];
+let vietnameseWords = ["xin chào", "thế giới", "tạm biệt"];
+let searchWord = "hello";
+let index = englishWords.indexOf(searchWord);
+if (index !== -1) {
+    console.log(vietnameseWords[index]);
+} else {
+    console.log("Không tìm thấy");
+}
+
+// Khi tìm kiếm, bạn có thể sử dụng phương thức indexOf() để tìm vị trí của từ tiếng Anh trong mảng 1. Nếu tìm thấy thì hiển thị từ tiếng Việt ở cùng vị trí trong mảng 2. Nếu không tìm thấy thì hiển thị thông báo không tìm thấy.
+// Bạn có thể thay đổi giá trị của biến searchWord để tìm kiếm các từ khác trong mảng.
+    </script>
+</body>
+</html>
