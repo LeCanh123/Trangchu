@@ -8,6 +8,7 @@
 </head>
 <body>
     <script>
+        //Chuyển chữ thường thành chữ hoa và chữ hoa thành chữ thường
         let string='Keep Calm And Code On';
        let result="";
        for(let i=0;i<string.length;i++){
@@ -18,6 +19,19 @@
         }
        }
        console.log(result);
+        
+        
+        //chuyển chữ đầu thành chữ hoa
+let string = "keep calm and code on";
+        let result = [];
+        let array = string.split(" ");
+        for (let i = 0; i < array.length; i++) {
+            array[i] = array[i][0].toUpperCase() + array[i].slice(1);
+            console.log(array[i].slice(1))
+            result.push(array[i]);
+        }
+        console.log(result.join(" "));
+        console.log(array)
 
     </script>
 </body>
