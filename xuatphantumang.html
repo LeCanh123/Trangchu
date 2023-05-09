@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// Bài 1: Viết chương trình khởi tạo mảng 2 chiều, gồm một bộ các phần tử có
+// sẵn, in ra các phần tử trong mảng.
+
+const a = [[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]];
+ 
+for (const i in a) 
+{
+   console.log(`row ${i}`);
+   for (const j in a[i]) 
+     {
+      console.log(` ${a[i][j]}`);
+     }
+}
+
+// Viết một chương trình để in các ký tự trong một mảng theo thứ tự đảo ngược.
+// Ví dụ, nếu một mảng chứa các ký tự [ 'c', 's', 'c', '2', '6', '1' ]
+// sau khi thực hiện đảo ngược sẽ là "162csc".
+
+arr = ['c', 's', 'c', '2', '6', '1']
+arr.reverse()
+print(''.join(arr))
+
+
+//  Viết một chương trình khai báo một mảng ký tự. In ra số “ký tự số” trong
+// mảng.
+const arr = ["a", "b", "1", "2", "3"];
+const count = arr.join("").match(/\d/g).length;
+console.log(count);
+
+
+//  Viết một chương trình để đếm số từ trong một chuỗi.
+const string = "Hello world";
+const words = string.split(" ");
+console.log(words.length);
+
+// Viết một chương trình nhập vào 2 chuỗi, sau đó kiểm tra xem hai chuỗi có
+// giống nhau hay không.
+
+
+// Viết chương trình nhập vào một mảng ký tự, tìm tất cả các ký tự trong
+// mảng là (-) và thay thế các ký tự này bởi ký tự ( _ )
+var arr = ["a", "-", "b", "-", "c"];
+for (var i = 0; i < arr.length; i++) {
+  if (arr[i] == "-") {
+    arr[i] = "_";
+  }
+}
+console.log(arr); // ["a", "_", "b", "_", "c"]
+
+    </script>
+</body>
+</html>
