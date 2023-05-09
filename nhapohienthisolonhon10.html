@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var arr = [];
+let so = +prompt("nhập số");
+if(so!=-1){
+    arr.push(so)
+console.log(arr)
+    }
+while(so!=-1){
+    
+    
+    so =+prompt("nhập số viết -1 để kết thúc")
+    if(so!==-1){
+    arr.push(so)
+}
+console.log(arr)
+
+}
+console.log(arr)
+
+var count = 0;
+for (var i = 0; i < arr.length; i++) {
+  if (arr[i] >= 10) {
+    count++;
+  }
+}
+console.log("Số lượng các số nguyên trong mảng lớn hơn hoặc bằng 10 là: " + count);
+    </script>
+</body>
+</html>
