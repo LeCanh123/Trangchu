@@ -36,27 +36,24 @@
 
 
 
-let so=+prompt("nhập số thứ nhất");
+let so;
 let so1=[];
+while(true){
+so=+prompt("nhập số thứ nhất");
 if(Number.isInteger(so)){
 so1.push(so)
-}
+break;
+}else{ alert("Số nhập vào không phải số nguyên")}}
 for(i=2;i<6;i++){
-
+while(true){so=+prompt("nhập số thứ "+i);
 if(Number.isInteger(so)){
-    so=+prompt("nhập số thứ "+i)
     so1.push(so)
     console.log(so1)
-}else{
-    alert("Số nhập vào không phải số nguyên")
-    so1=[];
     break;
-}
-}
+}else{alert("Số nhập vào không phải số nguyên")}}}
 console.log(so1)
 let soLonNhat=so1.sort((a,b)=> b-a);
 console.log("Số Lớn Nhất Là :" + soLonNhat[0])
-
 
 
 
