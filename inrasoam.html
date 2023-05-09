@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         var arr = ["a", "1", "b", "2", "c", "3"];
+// var count = arr.filter(function (item) {
+//   return !isNaN(item);
+// }).length;
+// console.log("Số lượng các ký tự số trong mảng là: " + count);
+
+
+
+
+// var arr = [];
+// var a;
+// while(true){
+//     a=prompt("Nhập số vào viết end để kết thúc")
+//     if(a=="end"){
+//         break;
+//     }else{
+//        arr.push(a) 
+//        console.log(arr)
+//     }
+// }
+// var count = arr.filter((item)=>
+//   item<0
+// ).length;
+// console.log("Các số âm là"+arr.filter((item)=>
+//   item<0))
+// console.log("Số âm trong mảng là: " + count);
+
+
+
+// var arr = "-7-888-44-đfds-ádas"
+// var a;
+// while(true){
+//     a=prompt("Nhập chuỗi vào")
+//     if(a=="end"){
+//         break;
+//     }else{
+//        arr.push(a) 
+//        console.log(arr)
+//     }
+// }
+// var count = arr.filter((item)=>
+//   item<0
+// ).length;
+// console.log("Các số âm là"+arr.filter((item)=>
+//   item<0))
+// console.log("Số âm trong mảng là: " + count);
+
+
+// var arr = "-7-888-44-đfds-ádas";
+// var num = "";
+// var result = [];
+
+// for (var i = 0; i < arr.length; i++) {
+//   if (arr.charAt(i) === "-") {
+//     num += "-";
+//   } else if (!isNaN(arr.charAt(i))) {
+//     num += arr.charAt(i);
+//   } else {
+//     if (num !== ""&&num !== "-") {
+//       result.push(num);
+//       num = "";
+//     }
+//   }
+// }
+
+// // if (num !== "") {
+// //   result.push(num);
+// // }
+
+// console.log(result);
+
+
+//Cách 1
+let a = "-jgfgfjg-5598-732bzvx587-889-5";
+        let b = [];
+
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] == "-") {
+                let start = i + 1;
+                let end = start;
+                while (end < a.length && !isNaN(parseInt(a[end]))) {
+                    end++;
+                }
+                b.push(parseInt(a.substring(start, end) * -1));
+            }
+        }
+        console.log(`Các số âm trong chuỗi là: ${b.join(",")}`);
+
+
+        //Cách 2
+
+        let str = "jgfgfjg-5598-766.5bzvx587-889-5";
+     
+     console.log(typeof(parseInt("5.5jg")));
+       let arr = str.split("-");//["5jgfgfjg","5598","766.5bzvx587","889","5"]
+       console.log(arr);
+       let arr2 = [];
+       for (let i = 0; i < arr.length; i++) {
+         arr2.push(parseFloat(arr[i]))
+       }
+       arr2.shift();
+       console.log(arr2);
+       for (let i = 0; i < arr2.length; i++) {
+         if(!Number.isInteger(arr2[i])){
+           continue;
+         }
+         console.log(-arr2[i]);
+      
+       }
+       
+    </script>
+</body>
+</html>
