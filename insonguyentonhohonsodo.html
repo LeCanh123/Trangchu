@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //viết chương trình cho người dùng nhập vào sau đó in ra số nguyên tố nhỏ lơn số đó
+        // function isPrime(num) {
+        //     for(var i = 2; i < num; i++){//i=1,2 i<num nên vòng for không chạy
+        //         console.log(i)
+        //       if(num % i === 0) return false
+        //     };
+        //     return num !== 1;
+        // }
+
+        // function findPrimes(n) {
+        //     var primes = [];
+        //     for(var i = 2; i < n; i++)
+        //       if(isPrime(i)) primes.push(i);
+        //     return primes;
+        // }
+
+        // console.log(findPrimes(10))
+        // console.log(isPrime(3))
+        // console.log(2%2==0)
+
+
+        function soNguyenTo() {
+            let num1 = +prompt("Mời nhập số bất kì");
+            let ketqua = [];
+            for (num = 0; num < num1; num++) {
+                let flag = true;
+                if (num < 2) {
+                    flag = false;
+                } else {
+                    for (let i = 2; i < num; i++) {
+                        if (num % i == 0) {
+                            flag = false;
+                            break;
+                        }
+
+                    }
+                }
+                if (flag == true) {
+                    
+                    ketqua.push(num);
+                } else { };
+            }
+            console.log("kết quả các số nguyên tố nhỏ hơn " +num1+ " Là "+ ketqua);
+        }
+        soNguyenTo();
+    </script>
+</body>
+
+</html>
