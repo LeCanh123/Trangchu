@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Array.prototype.filter2 = function (callback) {
+            var a = [], length = this.length;
+            for (let i = 0; i < length; i++) {
+                var hi = callback(this[i]);
+                if (hi == true) {
+                    a.push(this[i]);
+                }
+            }
+            return a;
+        }
+        var courses = [1, 2, 5, 3, 6, 7, 8];
+
+        var h = courses.filter(function (a) {
+            return true;
+        })
+        console.log(h);
+
+        // - reduce
+
+        // Array.prototype.reduce2 = function (callback) {
+        //     var length = this.length;
+        //     var h = 0;
+        //     for (var i = 0; i < length; i++) {
+        //         h += callback(0, this[i]);
+
+        //     }
+        //     return h;
+        // }
+
+        // var arr = [1, 6, 4, 7, 8, 5, 4, 10];
+
+        // var tong = arr.reduce2(function (hientai, value) {
+        //     return hientai + value;
+        // }, 0)
+        // console.log(tong);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var course = [
+            'Javascript',
+            'PHP',
+            'Ruby'
+        ];
+        //    var htmls= course.map(function(course){
+        //     console.log(course);
+        //    })
+        // function map2(){
+        //     console.log(a)
+        // }
+        Array.prototype.map2 = function (callback) { //gán cho map2 là function vì map2 là phương thức
+            var output = []
+            //console.log(this)//this là thằng gọi đến phương thức chính là course ở bên dưới course.map2()
+            var arrayLength = this.length
+            for (i = 0; i < arrayLength; i++) {
+                var result = callback(this[i], i);//gọi lại function của mảng gọi đến
+                output.push(result);
+
+            }
+            return (output)
+        }
+
+        var htmls = course.map2(function (course, index) {
+            return course
+        });
+        console.log(htmls)
+
+    </script>
+</body>
+
+</html>
