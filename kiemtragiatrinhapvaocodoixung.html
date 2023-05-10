@@ -29,14 +29,14 @@
 
 
         // cách 2
-        let nhapchuoi=prompt("nhập số")
+       let nhapchuoi=prompt("nhập số")
         function kiemtrachuoi(nhapchuoi1){
-            let daochuoi=nhapchuoi.split("").reverse().join("");;
-            return daochuoi===nhapchuoi1;
-        }
-        if(kiemtrachuoi(nhapchuoi)){
+            let daochuoi=nhapchuoi.split("").reverse().join("");
+            if(daochuoi===nhapchuoi1){
             console.log("Là chuỗi đối xứng");
         }else{console.log("Không phải là chuỗi đối xứng")}
+        }
+        kiemtrachuoi(nhapchuoi);
     </script>
 </body>
 
