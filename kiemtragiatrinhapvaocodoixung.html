@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //nhập chuỗi xem có đối xứng
+        // function isPalindrome() {
+        //     let str = prompt("Nhập vào chuỗi bất kì");
+        //     // let str = +prompt("Nhập vào chuỗi bất kì");
+
+        //     var len = str.length;
+        //     for (var i = 0; i < len / 2; i++) {
+        //         if (str[i] !== str[len - 1 - i]) {
+        //             return "Chuỗi không đối xứng";
+        //         }else{return "Chuỗi đối xứng";
+        //     }
+        //     }
+            
+        // }
+        // console.log(isPalindrome())
+
+
+        // cách 2
+        let nhapchuoi=prompt("nhập số")
+        function kiemtrachuoi(nhapchuoi1){
+            let daochuoi=nhapchuoi.split("").reverse().join("");;
+            return daochuoi===nhapchuoi1;
+        }
+        if(kiemtrachuoi(nhapchuoi)){
+            console.log("Là chuỗi đối xứng");
+        }else{console.log("Không phải là chuỗi đối xứng")}
+    </script>
+</body>
+
+</html>
