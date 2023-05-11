@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Nhập Tiếng Anh</p>
+    <input type="text" id="123" oninput="Dich1()">
+    <p>Nhập Tiếng Việt</p>
+    <input type="text" id="456" oninput="Dich2()">
+
+
+    <script>
+    let z=[['hello','xin chao'],['put','đấm'],["c",'Lê Ngọc Cảnh'],["2","Chào cưng"],["1","one"],["10","ten"]]
+function Dich1(){
+    let a=document.getElementById('123').value;
+    console.log(a)
+    let c=z.find((b)=>b[0]==a);
+console.log(c[1])
+let d=c[1]
+document.getElementById('456').value= d;
+
+}
+    </script>
+
+</body>
+</html>
