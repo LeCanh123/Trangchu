@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [];
+        while (arr.length < 2) {
+          let number = +prompt("Nhập số");
+          arr.push(number);
+          if (arr.length == 2) {
+            break;
+          }
+          
+        }
+
+        // phải có 1 biến phụ để lưu 
+        console.log("số Trước khi đổi vị trí "+arr);
+          let temp=arr[0];
+          arr[0] = arr[1];
+          arr[1] = temp;
+        
+        
+        console.log("số sau khi đổi vị trí   "+arr);
+
+    </script>
+</body>
+</html>
