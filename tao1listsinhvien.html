@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+
+    button {
+        width: 50px;
+    }
+
+    .col-1 {
+        width:30%;
+        background-color: aqua;
+        display:inline-block;
+        margin: 0;
+    }
+
+    .col-2 {
+        width: 70%;
+        background-color: rgb(0, 255, 98);
+        display:inline-block;
+        margin: 0;
+
+    }
+
+    .col-3 {
+        width: 5%;
+        background-color: rgb(0, 255, 98);
+        float: left;
+        margin: 0;
+
+    }
+</style>
+
+<body>
+    <h1>Thêm Sinh Viên Vào Danh Sách</h1>
+    <input type="text" id="tenSinhVien">
+    <button onclick="add()">Add</button>
+    <h3>Danh Sach Sinh Vien</h3>
+    <div id="danhSachSinhVien">
+    </div>
+
+
+    <script>
+        let danhSachSV = [];
+
+        function add() {
+            let tenSV = document.getElementById("tenSinhVien").value;
+            danhSachSV.push(tenSV)
+            console.log(danhSachSV)
+            renderDanhSach()
+        }
+        function renderDanhSach() {
+            let ketQua = "";
+            for (i = 0; i < danhSachSV.length; i++) {
+                ketQua += `<div class="col-1">
+                    <div class="col-2">${danhSachSV[i]}</div>
+        <button  onclick="xoa(${i})">delete</button>
+            <button onclick="sua(${i})">edit</button></div>
+<br>
+        `
+            }
+            document.getElementById("danhSachSinhVien").innerHTML = ketQua;
+        }
+        function xoa(a) {
+            danhSachSV.splice(a, 1)
+            renderDanhSach()
+        }
+        function sua(a) {
+            let tenSV = document.getElementById("tenSinhVien").value;
+            danhSachSV.splice(a, 1, tenSV)
+            renderDanhSach()
+        }
+    </script>
+</body>
+
+</html>
