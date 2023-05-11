@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="1" src="https://dongchinh-game-puzzle.netlify.app/image/Gau%201.jpg" height="100" width="600" onclick="tren()"><br>
+    <img id="2" src="https://dongchinh-game-puzzle.netlify.app/image/Cat%202.jpg" height="79" width="600" onclick="giua()"><br>
+    <img id="3" src="https://dongchinh-game-puzzle.netlify.app/image/Khi%203.jpg" height="79" width="600" onclick="duoi()">
+
+<script>
+    let gau=document.getElementById("1")
+    let meo=document.getElementById("2")
+    let khi=document.getElementById("3")
+    let a=8
+    let b=9
+    let c=10
+
+console.log(khi);
+function tren(){
+    a++;
+    console.log(a)
+    if(a==9){gau.src="https://dongchinh-game-puzzle.netlify.app/image/Cat%201.jpg";}else 
+    if(a==10){gau.src="https://dongchinh-game-puzzle.netlify.app/image/Khi%201.jpg";}else 
+    {a=8
+        gau.src="https://dongchinh-game-puzzle.netlify.app/image/Gau%201.jpg";}
+        dung();
+}
+function giua(){
+    b++;
+    console.log(b)
+    if(b==9){meo.src="https://dongchinh-game-puzzle.netlify.app/image/Cat%202.jpg";}else 
+    if(b==10){meo.src="https://dongchinh-game-puzzle.netlify.app/image/Khi%202.jpg";}else 
+    {b=8
+        meo.src="https://dongchinh-game-puzzle.netlify.app/image/Gau%202.jpg";}
+        dung();
+}
+function duoi(){
+    c++;
+    console.log(c)
+    if(c==9){khi.src="https://dongchinh-game-puzzle.netlify.app/image/Cat%203.jpg";}else 
+    if(c==10){khi.src="https://dongchinh-game-puzzle.netlify.app/image/Khi%203.jpg";}else 
+    {c=8
+        khi.src="https://dongchinh-game-puzzle.netlify.app/image/Gau%203.jpg";}
+        dung();
+}
+function dung(){
+    console.log(a);
+        console.log(b);
+        console.log(c);
+    if(a==b&&a==c){
+        gau.style.boxShadow = 'red 4px 4px 9px';
+        meo.style.boxShadow = 'red 4px 4px 9px';
+        khi.style.boxShadow = 'red 4px 4px 9px';
+    }
+    else{
+        gau.style.boxShadow = 'blue 4px 4px 9px';
+        meo.style.boxShadow = 'blue 4px 4px 9px';
+        khi.style.boxShadow = 'blue 4px 4px 9px'; 
+    }
+}
+</script>
+    
+</body>
+</html>
