@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Quản lý sinh viên</title>
+       
+    </head>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td:last-child {
+            text-align: center;
+        }
+
+        .delete {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+
+    <body>
+        <div class="container">
+            <h1>Quản lý sinh viên</h1>
+            <form>
+                <input type="text" placeholder="Tên sinh viên" value="Cảnh" id="name">
+                <input type="text" placeholder="ID" id="id" value="01">
+                <input type="text" placeholder="Quê quán" id="hometown" value="Lâm Đồng">
+                <input type="text" placeholder="Email" id="email" value="NgocCanh@gmail.com">
+                <input type="text" placeholder="SĐT" id="phone" value="0909080800">
+                <button type="button" onclick="addStudent()" class="canh">Thêm sinh viên</button><br>
+                <button type="button" onclick="sort()" class="canh">Sắp Xếp</button><br>
+                <button type="button" class="canh1">Tổng Số Sinh Viên: 0</button>
+
+
+            </form>
+
+            <table cellspacing="100px">
+                <thead>
+                    <tr>
+                        <th style="background-color: aliceblue;color: #4CAF50;margin-left:20px">                
+                            <input style="margin:2px 10px 0px 0px" type="text" placeholder="Tên sinh viên" value="Cảnh" class="name1"  oninput="locSV()">
+                        </th>
+                        <th style="background-color: aliceblue;color: #4CAF50; "><button style="margin:0px 20px 0px 20px" type="button" onclick="locSV()" class="canh1">Lọc Sinh Viên</button></th>
+                        <th style="background-color: aliceblue;color: #4CAF50; "><button style="margin-top:0px" type="button" onclick="huyLocSV()" class="canh2">Huỷ Lọc Sinh Viên</button></th>
+                    
+                    </tr>
+                </thead>
+               
+            </table>
+
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th>Tên sinh viên</th>
+                        <th>ID</th>
+                        <th>Quê quán</th>
+                        <th>Email</th>
+                        <th>SĐT</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="student-list">
+                </tbody>
+            </table>
+        </div>
+        <script>
+
+            let students = [];
+            let ketQuaTim=[];
+
+            function addStudent() {
+                let name = document.getElementById("name").value;
+                let id = document.getElementById("id").value;
+                let hometown = document.getElementById("hometown").value;
+                let email = document.getElementById("email").value;
+                let phone = document.getElementById("phone").value;
+
+                if (name && id && hometown && email && phone) {
+                    let student = {
+                        name: name,
+                        id: id,
+                        hometown: hometown,
+                        email: email,
+                        phone: phone,
+                    };
+
+                    students.push(student);
+                    displayStudents();
+                    clearForm();
+                } else {
+                    alert("Vui lòng nhập đầy đủ thông tin sinh viên");
+                }
+            }
+
+            function updateStudent(a, b, c, d, e, f) {
+               
+                localStorage.setItem("keyId", f)
+                displayStudents();
+
+                let name = document.getElementById("name");
+                let id = document.getElementById("id");
+                let hometown = document.getElementById("hometown");
+                let email = document.getElementById("email");
+                let phone = document.getElementById("phone");
+                name.value = a
+                id.value = b
+                hometown.value = c
+                email.value = d
+                document.getElementById("phone").value = e
+                let canh = document.querySelector(".canh");
+                canh.style = "background-color:red"
+                canh.innerHTML = "Hoàn Thành"
+
+
+                canh.onclick = function () {
+                    let name = document.getElementById("name").value;
+                    let id = document.getElementById("id").value;
+                    let hometown = document.getElementById("hometown").value;
+                    let email = document.getElementById("email").value;
+                    let phone = document.getElementById("phone").value;
+                    if (name && id && hometown && email && phone) {
+                        let student = {
+                            name: name,
+                            id: id,
+                            hometown: hometown,
+                            email: email,
+                            phone: phone,
+                        };
+                        
+                        students.splice(f, 1, student)
+                        
+                        displayStudents();
+                        localStorage.removeItem("keyId");
+                        displayStudents();
+                        let canh = document.querySelector(".canh");
+                        canh.innerHTML = "Thêm sinh viên";
+                        canh.style = "background-color: #4CAF50"
+                        canh.onclick = function () {
+
+                            let name = document.getElementById("name").value;
+                            let id = document.getElementById("id").value;
+                            let hometown = document.getElementById("hometown").value;
+                            let email = document.getElementById("email").value;
+                            let phone = document.getElementById("phone").value;
+
+                            if (name && id && hometown && email && phone) {
+                                let student = {
+                                    name: name,
+                                    id: id,
+                                    hometown: hometown,
+                                    email: email,
+                                    phone: phone,
+                                };
+
+                                students.push(student);
+                                displayStudents();
+                                clearForm();
+                            } else {
+                                alert("Vui lòng nhập đầy đủ thông tin sinh viên");
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
+            function deleteStudent(a) {
+                localStorage.removeItem("keyId");
+                let canh = document.querySelector(".canh");
+                canh.style = "background-color: #4CAF50;"
+                students.splice(a, 1);
+                displayStudents();
+                clearForm();
+            }
+
+            function displayStudents(abc) {
+                
+                if(abc==undefined){
+                let canh1 = document.querySelector(".canh1");
+                canh1.innerHTML = `Tổng Số Sinh Viên: ${students.length}`;
+                let table = document.getElementById("studentTable");
+                table.innerHTML = `
+        <tr>
+          <th>Tên sinh viên</th>
+          <th>ID</th>
+          <th>Quê quán</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          
+
+        </tr>
+      `;
+
+                students.forEach((student, a) => {
+                    
+                    if (localStorage.getItem("keyId") != a) {
+                        table.innerHTML += `
+          <tr>
+            <td>${student.name}</td>
+            <td>${student.id}</td>
+            <td>${student.hometown}</td>
+            <td>${student.email}</td>
+            <td>${student.phone}</td>
+            <td><button onclick='deleteStudent("${a}")'>Xoá</button></td>
+            <td><button onclick='updateStudent("${student.name}","${student.id}","${student.hometown}","${student.email}","${student.phone}","${a}")'>Sửa</button></td>
+
+          </tr>
+        `;
+                    } else {
+                        table.innerHTML += `
+          <tr>
+            <td style="background-color:red" >${student.name}</td>
+            <td style="background-color:red" >${student.id}</td>
+            <td style="background-color:red" >${student.hometown}</td>
+            <td style="background-color:red" >${student.email}</td>
+            <td style="background-color:red" >${student.phone}</td>
+            <td style="background-color:red" ><button onclick='deleteStudent("${a}")'>Xoá</button></td>
+            <td style="background-color:red" ><button onclick='updateStudent("${student.name}","${student.id}","${student.hometown}","${student.email}","${student.phone}","${a}")'>Sửa</button></td>
+
+          </tr>
+        `;
+
+                    }
+                });
+            }else{
+                let canh1 = document.querySelector(".canh1");
+                canh1.innerHTML = `Tổng Số Sinh Viên: ${students.length}`;
+                let table = document.getElementById("studentTable");
+                table.innerHTML = `
+        <tr>
+          <th>Tên sinh viên</th>
+          <th>ID</th>
+          <th>Quê quán</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          
+
+        </tr>
+      `;
+      ketQuaTim.forEach((student, a) => {
+        
+                        table.innerHTML += `
+          <tr>
+            <td>${student.name.name}</td>
+            <td>${student.name.id}</td>
+            <td>${student.name.hometown}</td>
+            <td>${student.name.email}</td>
+            <td>${student.name.phone}</td>
+            <td><button onclick='deleteStudent("${student.id}")'>Xoá</button></td>
+            <td><button onclick='updateStudent("${student.name.name}","${student.name.id}","${student.name.hometown}","${student.name.email}","${student.name.phone}","${student.id}")'>Sửa</button></td>
+
+          </tr>
+        `});
+
+                    }
+        
+
+
+        }
+            function sort() {
+                let sort1 = [];
+                let sort2 = [];
+                for (i = 0; i < students.length; i++) {
+                    sort1.push(students[i].name)
+                   
+                }
+                sort1 = sort1.sort();
+                sort1.forEach((a) => {
+                    for (i = 0; i < students.length; i++) {
+                        if (students[i].name == a) {
+                            sort2.push(students[i]);
+                        }
+                    }
+
+
+                })
+                students = sort2;
+                displayStudents()
+            }
+
+            // function clearForm() {
+            //     document.getElementById("name").value = "";
+            //     document.getElementById("id").value = "";
+            //     document.getElementById("hometown").value = "";
+            //     document.getElementById("email").value = "";
+            //     document.getElementById("phone").value = "";
+            // }
+            function locSV(){
+    //             let d=document.querySelector(".name1").value;
+                
+    //            let c= students.find((a,b)=>{
+       
+    //    return a.name==d;
+      
+
+    //             }
+                
+
+    //             )
+    //             console.log(c);
+    //             if(c!=null){
+    //             let table = document.getElementById("studentTable");
+    //             table.innerHTML = `
+    //     <tr>
+    //       <th>Tên sinh viên</th>
+    //       <th>ID</th>
+    //       <th>Quê quán</th>
+    //       <th>Email</th>
+    //       <th>Số điện thoại</th>
+          
+
+    //     </tr>
+    //   `;
+    //             table.innerHTML += `
+    //       <tr>
+    //         <td style="background-color:red" >${c.name}</td>
+    //         <td style="background-color:red" >${c.id}</td>
+    //         <td style="background-color:red" >${c.hometown}</td>
+    //         <td style="background-color:red" >${c.email}</td>
+    //         <td style="background-color:red" >${c.phone}</td>
+           
+    //       </tr>
+    //     `;}
+    //         else{
+    //             let table = document.getElementById("studentTable");
+    //             table.innerHTML = `
+    //     <tr>
+    //       <th>Tên sinh viên</th>
+    //       <th>ID</th>
+    //       <th>Quê quán</th>
+    //       <th>Email</th>
+    //       <th>Số điện thoại</th>
+          
+
+    //     </tr>
+    //   `;
+    //             table.innerHTML += `
+    //       <tr>
+    //         <td style="background-color:blue;color:white;" >Không Tìm Thấy dữ liệu</td>
+    //         <td style="background-color:blue" ></td>
+    //         <td style="background-color:blue" ></td>
+    //         <td style="background-color:blue" ></td>
+    //         <td style="background-color:blue" ></td>
+           
+    //       </tr>
+    //     `;
+    //         }
+
+let d=document.querySelector(".name1").value;
+ketQuaTim=[];
+
+for(i=0;i<students.length;i++){
+  
+   
+if(students[i].name.indexOf(d) != -1){
+    let ketQuaTim1={
+    name:students[i],
+    id:i,
+}
+
+ketQuaTim.push(ketQuaTim1)
+}
+}
+
+displayStudents(ketQuaTim);
+
+
+        }
+        function huyLocSV(){
+            displayStudents(); 
+        }
+        </script>
+    </body>
+
+    </html>
+    </script>
+</body>
+
+</html>
