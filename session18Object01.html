@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// let person = {};
+
+//cập nhật đối tượng của chúng
+let person = {
+   name: ['Bob', 'Smith'],
+   age: 32,
+   gender: 'male',
+   interests: ['music', 'skiing'],
+   bio: function() {
+       alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+   },
+   greeting: function() {
+       alert('Hi! I\'m ' + this.name[0] + '.');
+   }
+};
+person.bio();
+
+// cú pháp Object
+// let objectName = {
+//    member1Name: member1Value,
+//    member2Name: member2Value,
+//    member3Name: member3Value
+// }
+
+// Truy xuất thuộc tính và phương thức của đối tượng:
+// objectName.propertyName;
+// objectName.methodName;
+
+
+// dấu chấm (".") để truy xuất các thuộc tính và phương thức của đối tượng
+person.age;
+person.interests[1];
+person.bio();
+
+//Thiết lập các thành phần của đối tượng
+person.age = 45;
+person['name']['last'] = 'Cratchit';//Set giá trị
+person.age
+person['name']['last']//Get giá trị
+person['eyes'] = 'hazel';
+person.farewell = function() { alert("Bye everybody!"); }
+person['eyes']
+person.farewell()
+
+
+// Một lợi ích khác của cặp ngoặc vuông là nó không chỉ được sử dụng cho việc thiết lập linh động các giá trị của thành phần trong đối tượng mà còn thiết lập linh động cho tên của các thành phần. Giả sử chúng ta muốn người dùng có thể lưu trữ các loại giá trị tùy chọn cho dữ liệu người của họ, bằng cách viết tên và giá trị của thành phần vào hai ô văn bản?
+
+// Chúng ta có thể nhận được những giá trị đó như thế này:
+// let myDataName = nameInput.value;
+// let myDataValue = nameValue.value;
+// person[myDataName] = myDataValue;
+let myDataName = 'height';
+let myDataValue = '1.75m';
+person[myDataName] = myDataValue;
+person.height
+
+    </script>
+</body>
+</html>
