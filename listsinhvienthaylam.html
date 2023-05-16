@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .form-student {
+    margin-left: 20px;
+  }
+
+  input {
+    outline: none;
+    padding: 5px;
+  }
+
+  .button {
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    margin: 15px;
+  }
+
+  td {
+    text-align: center;
+  }
+</style>
+
+<body>
+  <h1> QUẢN LÝ SINH VIÊN </h1>
+  <div class="form-student">
+    <label for="nameStudent"> Tên sinh viên </label> <br>
+    <input type="text" id="nameStudent" placeholder="nhập tên sinh viên" value="Canh"> <br>
+    <label for=""> nhập id </label> <br>
+    <input type="text" id="idStudent" placeholder="nhập id" value="1"> <br>
+    <label for=""> quên quán </label> <br>
+    <input type="text" id="addressStudent" placeholder="nhập địa chỉ" value="Lam dong"> <br>
+    <label for=""> tuổi </label> <br>
+    <input type="text" id="ageStudent" placeholder="nhập tuổi" value="26"> <br>
+    <button class="button" id="buttonStudent" onclick="addStudent()">
+      add student
+    </button> <br>
+    <input type="text" id="searchByName" oninput="searchByName()" placeholder="tìm kiếm theo tên">
+    <button> search by name</button>
+  </div>
+  <div class="render-liststudent">
+    <table border="1px" id="table-liststudent">
+      <!-- <tr>
+            <th>STT</th>
+            <th> TÊN SINH VIÊN </th>
+            <th> ID </th>
+            <th> QUÊ QUÁN</th>
+            <th> TUỔI </th>
+            <th> ACTION </th>
+          </tr> -->
+       <!-- <tr>
+            <td> 1 </td>
+            <td> trung trâu </td>
+            <td> 01 </td>
+            <td> quảng nôm </td>
+            <td> 24 </td>
+            <td> xoá </td>
+            <td> sửa </td>
+          </tr> -->
+    </table>
+  </div>
+  <script>
+    /* 
+        + Tạo 1 mảng để chứa danh sách sinh viên.
+        + tạo 1 function để cho người dùng nhấn nút add student.
+         - lấy giá trị người dùng nhập vào theo id.
+         - tạo 1 đối tượng student
+         - push(thêm sinh viên vào mảng );
+         - hiển thị danh sách sinh viên ra.
+        + lấy được các giá trị ô input người dùng nhập vào.
+     */
+    let listStudents = [];
+    function addStudent() {
+      let getIdLocal = localStorage.getItem("keyId");
+      if (getIdLocal != null) {
+        for (let j = 0; j < listStudents.length; j++) {
+          if (listStudents[j].id == getIdLocal) {
+            let objStudent = {
+              name: document.getElementById("nameStudent").value,
+              id: document.getElementById("idStudent").value,
+              address: document.getElementById("addressStudent").value,
+              age: document.getElementById("ageStudent").value,
+            }
+            listStudents.splice(j, 1, objStudent);
+            //xoá key trên local
+            localStorage.removeItem("keyId");
+            document.getElementById("buttonStudent").innerHTML = "add Student";
+            renderListStudents(listStudents);
+            document.getElementById("nameStudent").value = "";
+            document.getElementById("idStudent").value = "";
+            document.getElementById("addressStudent").value = "";
+            document.getElementById("ageStudent").value = "";
+            return;// thoát khỏi hàm luôn
+
+          }
+        }
+      }
+      console.log(getIdLocal);
+      let valueName = document.getElementById("nameStudent").value;
+      let valueId = document.getElementById("idStudent").value;
+      let valueAddress = document.getElementById("addressStudent").value;
+      let valueAge = document.getElementById("ageStudent").value;
+      // console.log("valueName", valueName);
+      // console.log("valueId", valueId);
+      // console.log("valueAddressStudent", valueAddressStudent);
+      // console.log("valueageStudent", valueageStudent);
+      let objStudent = {
+        name: valueName,
+        id: valueId,
+        address: valueAddress,
+        age: valueAge
+      }
+      listStudents.push(objStudent);
+      renderListStudents(listStudents);
+      // document.getElementById("nameStudent").value = "";
+      // document.getElementById("idStudent").value = "";
+      // document.getElementById("addressStudent").value = "";
+      // document.getElementById("ageStudent").value = "";
+    }
+    //[{},{},{}]
+    function renderListStudents(param) {
+        console.log(param);
+      let result = "";
+      for (let i = 0; i < param.length; i++) {
+        result +=
+          ` 
+                <tr>
+                  <td> ${i + 1} </td>
+                  <td> ${param[i].name} </td>
+                  <td> ${param[i].id} </td>
+                  <td> ${param[i].address} </td>
+                  <td> ${param[i].age} </td>
+                  <td> <button onclick="deleteStudent('${param[i].id}')"> xoá </button> </td>
+                  <td> <button onclick="editStudent('${param[i].id}')"> sửa </button> </td>
+                </tr>
+          `//19035844516011
+      }
+      document.getElementById("table-liststudent").innerHTML =
+        `
+          <tr>
+            <th>STT</th>
+            <th> TÊN SINH VIÊN 
+                  <i onclick="sortUpByName()" class="fa-solid fa-sort-up"></i>
+                 <i onclick="sortDownByName()" class="fa-solid fa-sort-down"></i>
+              </th>
+            <th> ID </th>
+            <th> QUÊ QUÁN</th>
+            <th> TUỔI
+                 <i onclick="sortUp()" class="fa-solid fa-sort-up"></i>
+                 <i onclick="sortDown()" class="fa-solid fa-sort-down"></i> </th>
+            <th colspan="2"> ACTION </th>
+          </tr>
+          ${result}
+        `
+    }
+
+
+
+    function deleteStudent(idStudent) {
+      console.log("idStudent", idStudent);
+      for (let i = 0; i < listStudents.length; i++) {
+        if (listStudents[i].id == idStudent) {
+          listStudents.splice(i, 1);
+        }
+      }
+      renderListStudents(listStudents);
+    }
+
+
+    function editStudent(idStudent) {
+      document.getElementById("buttonStudent").innerHTML = "saveEdit Student";
+      for (let i = 0; i < listStudents.length; i++) {
+        if (listStudents[i].id == idStudent) {
+          document.getElementById("nameStudent").value = listStudents[i].name;
+          document.getElementById("idStudent").value = listStudents[i].id;
+          document.getElementById("addressStudent").value = listStudents[i].address;
+          document.getElementById("ageStudent").value = listStudents[i].age;
+          localStorage.setItem("keyId", idStudent);
+          // lưu 1 key trên local để biết là người dùng mới click vào edit
+        }
+      }
+    }
+    // function để tìm kiếm
+
+    function searchByName() {
+      let valueInputSearch = document.getElementById("searchByName").value;
+      console.log("valueInputSearch", valueInputSearch);
+      let resultSearch = [];
+      for (let i = 0; i < listStudents.length; i++) {
+        if (listStudents[i].name.indexOf(valueInputSearch) != -1) {
+          resultSearch.push(listStudents[i]);
+        }
+      }
+      console.log(resultSearch);
+      renderListStudents(resultSearch);
+    }
+
+
+    function sortDown() {
+      let resultSortDown = listStudents.sort((a, b) => {
+        console.log("asortđown",a.age,"b111",b.age);
+        return a.age - b.age;
+      })
+      renderListStudents(resultSortDown);
+    }
+    function sortUp() {
+      let resultSortDown = listStudents.sort((a, b) => {
+        console.log("asortup",a.age,"b111",b.age);
+
+        return a.age - b.age;
+      })
+      renderListStudents(resultSortDown.reverse());
+    }
+    function sortUpByName() {
+      let sortUpByName = listStudents.sort((a, b) => {
+        console.log("a",a,"b",b)
+        if (a.name < b.name) {
+          return -1
+        } else if (a.name > b.name) {
+          return 1
+        } else {
+          return 0
+        }
+      })
+      renderListStudents(sortUpByName);
+    }
+    function sortDownByName() {
+      console.log("1111");
+      let sortDownByName = listStudents.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1
+        } else if (a.name > b.name) {
+          return 1
+        } else {
+          return 0
+        }
+      })
+      renderListStudents(sortDownByName.reverse());
+    }
+  </script>
+</body>
+
+</html>
