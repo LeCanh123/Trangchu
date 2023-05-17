@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// let flatternArr=[['a', 'b'], ['c', 'b', 'a'],["canh","lê",["Ngọc","Mr"]]];
+
+// let flatternArr1=[];
+// flatternArr.forEach((a,c)=> {
+// if(typeof(a)=='object'){
+//     for(b=0;b<a.length;b++){
+//         flatternArr1.push(a[b]);
+//     }
+// }
+// else{
+//     flatternArr1.push(a);
+// }
+// }
+// )
+// console.log(flatternArr1);
+
+//cách 2
+let flatternArr=[['a', 'b'], ['c', 'b', 'a'],["canh","lê",["Ngọc","Mr"]]];
+let result=[];
+
+function test(arrParams1){
+for(let i=0;i<arrParams1.length;i++){
+    let temp=arrParams1[i];
+    if(Array.isArray(temp)){
+        test(temp);
+    }else{
+        result.push(temp);
+    }
+}
+
+}
+test(flatternArr)
+console.log(result);
+/////////////////////////////
+//cách 3
+// let flatternArr=[['a', 'b'], ['c', 'b', 'a'],["canh","lê"]];
+// let result=[];
+
+// function test(arrParams1){
+//     for(let temp of arrParams1){
+//         if(Array.isArray(temp)){
+//             test(temp);
+//         }else{
+//             result.push(temp);
+//         }
+//     }
+// }
+
+// test(flatternArr);
+// console.log(result);
+
+// Bài 4: Viết chương trình sử dụng destructuring để tách giá trị của đối tượng sau
+// let person = {
+//   name: "Rikkei Academy",
+//   age: 2,
+//   address: {
+//     street: "Mễ Trì",
+//     city: "Hà Nội",
+//   }
+// };
+// let {name,age,address}=person;
+// console.log(address);
+// console.log(typeof(age));
+
+    </script>
+
+</body>
+</html>
