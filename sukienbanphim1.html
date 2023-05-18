@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input onkeydown="return checkPhoneKey(event.key)" placeholder="Phone, please" type="tel">
+<script>
+   function checkPhoneKey(key) {
+    console.log(key);
+       return (key >= '0' && key <= '9') || ['+','(',')','-','C','a','n','h',"Backspace"].includes(key);
+    
+   }
+   
+   console.log(checkPhoneKey("/"));
+
+</script>
+</body>
+</html>
