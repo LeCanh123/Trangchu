@@ -1,0 +1,26 @@
+<html>
+    <header>
+        <!-- By the way, this is not the actual html file, just a generic example. -->
+        
+    </header>
+    <body>
+        <div id="example">
+            <p id="test">x: , y:</p>
+        </div>
+        <script>
+          function printMousePos() {
+    var cursorX;
+    var cursorY;
+    document.onmousemove = function(e) {
+      cursorX = e.screenX;
+      console.log(cursorX);
+      cursorY = e.screenY;
+      document.getElementById('test').innerHTML = "Toạ độ x: " + cursorX + ", Toạ độ y: " + cursorY;
+    }
+   
+  }
+
+  setInterval(printMousePos, 100); // Call printMousePos() every 100 milliseconds
+        </script>
+    </body>
+</html>
