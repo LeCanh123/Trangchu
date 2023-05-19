@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .showImage {
+        margin: 0 auto;
+    }
+
+    .showImage img {
+        display: block;
+        margin: 50px auto;
+        height: 200px;
+        width: 400px;
+        object-fit: cover;
+    }
+
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        width: 200px;
+        margin: 20px;
+    }
+
+    .material-symbols-outlined {
+        font-size: 50px;
+        color: tomato;
+    }
+
+    .list-image {
+        display: flex;
+    }
+
+    .show-opacity {
+        opacity: 0.6;
+
+    }
+
+    .active {
+        opacity: 1;
+    }
+</style>
+
+<body>
+
+    <div class="showImage">
+        <img id="show" alt="">
+    </div>
+    <div class="main">
+        <span onclick="left()" class="material-symbols-outlined">
+            arrow_back
+        </span>
+        <div class="list-image" id="renderImgs">
+            <!-- hiển thị 3 cái ảnh  -->
+        </div>
+        <span onclick="right()" class="material-symbols-outlined">
+            arrow_forward_ios
+        </span>
+    </div>
+    <!-- 
+        hiển thị 1 ảnh + kèm theo 2 cái icon tăng giảm 
+        khi click vào icon tăng hoặc giảm thì thay đổi ảnh
+        ++ theo thứ tự
+        ++ theo random
+     -->
+    <script>
+        // mảng chứa danh sách các ảnh.
+        let array = ["https://i.pinimg.com/736x/f3/c9/e6/f3c9e6c658db9a0b798456cf688b569c.jpg",
+         "https://toigingiuvedep.vn/wp-content/uploads/2021/06/anh-anime-galaxy-phong-canh-tuyet-dep.jpg",
+          "https://khoinguonsangtao.vn/wp-content/uploads/2022/08/hinh-anh-galaxy-anime.jpg", 
+          "https://img.thuthuatphanmem.vn/uploads/2018/10/20/galaxy-desktop-wallpaper_104250290.jpg",
+           "https://img.thuthuatphanmem.vn/uploads/2018/10/20/galaxy-planet-wallpaper-hd_104250400.jpg",
+            "https://msmobile.com.vn/upload_images/images/tai-hinh-nen-galaxy-cho-may-tinh-4.jpg",
+             "https://msmobile.com.vn/upload_images/images/tai-hinh-nen-galaxy-cho-may-tinh-2.jpg",
+              "https://hinhanhdephd.com/wp-content/uploads/2020/07/hinh-nen-galaxy-wallpaper-fullhd-dep-nhat-6.jpg", 
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNnzDHtIK2qasWyNXPsFj0yJamFmgctLLdXRY9bCuaYks5FWYWlfFCchqk6KZIsQ9VDR4&usqp=CAU"
+            ];
+        let count = 0;
+        let arrCount = [];//[1,2,3,4,5,6,7,8,9,10,]
+        
+        
+        
+        function right() {
+            count++;
+            console.log(count);
+
+            if (count == array.length - 4) {//10-4=6
+    arrCount = [array[array.length - 4], array[array.length - 3],//array[6],array[7]
+     array[array.length - 2], array[array.length - 1], array[0]];//array[8],array[9],array[0]
+                renderImages(arrCount);//renderImages(array[6],array[7],array[8],array[9],array[0])
+                showImage(arrCount[2]);
+                return;
+            }
+            if (count == array.length - 3) {//10-3=7
+                arrCount = [array[array.length - 3], array[array.length - 2], array[array.length - 1], array[0], array[1]];
+                renderImages(arrCount);
+                showImage(arrCount[2]);
+                return;
+            }
+            if (count == array.length - 2) {//10-2=8
+                arrCount = [array[array.length - 2], array[array.length - 1], array[0], array[1], array[2]];
+                renderImages(arrCount);
+                showImage(arrCount[2]);
+                return;
+            }
+            if (count == array.length - 1) {//10-1=9
+                arrCount = [array[array.length - 1], array[0], array[1], array[2], array[3]];
+                renderImages(arrCount);
+                showImage(arrCount[2]);
+                count = -1;
+                return;
+            }
+
+            let result = array.slice(count, count + 5);//cắt thành 5 chuỗi
+            renderImages(result);
+            showImage(result[2]);
+        }
+        function left() {
+        
+        // function hiển thị ảnh .
+        // 
+        // function renderImages(arr) {
+        //     let result = "";
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (i == 5) {
+        //             break;
+        //         }
+        //         result +=
+        //             `
+        //   <div class="item show-opacity">
+        //     <img onclick=clickImage(this) src="${arr[i]}" alt="">
+        //   </div>
+        // `
+        //     }
+        //     document.getElementById("renderImgs").innerHTML = result;
+        // }
+        // renderImages(array);//renderImages[dataloc]
+    }
+        
+
+        function clickImage(element) {//
+            
+            showImage(element.src);//hiển thị ảnh chính
+            const images = document.getElementsByClassName("item");
+            for (let i = 0; i < images.length; i++) {
+                images[i].classList.remove("active");//làm mờ hết active opacity=1
+            }
+            element.parentNode.classList.add("active");//làm sáng hình hiện tại opacity=1
+            console.log(element);
+            console.log(element.parentNode);
+       console.log(element.classList);
+
+       
+        }
+
+
+
+
+        function renderImages(arr) {//array[6],array[7],array[8],array[9],array[0]
+            let result = "";
+            for (let i = 0; i < arr.length; i++) {
+                if (i == 5) {
+                    break;
+                }
+                result +=
+                    `
+          <div class="item ${i == 2 ? 'show-opacity active' : 'show-opacity'}">
+            <img onclick="clickImage(this)" src="${arr[i]}" alt="">
+          </div>
+        `;
+            }
+            document.getElementById("renderImgs").innerHTML = result;
+        }
+        renderImages(array);//renderImages[dataloc]
+
+
+
+
+
+
+        
+        function showImage(showImg) {
+            document.getElementById("show").src = showImg;
+            // console.log("showImg", showImg);
+            for (let i = 0; i < array.length; i++) {
+if (array[i] == showImg) {
+                    // console.log("111111", i);
+
+                }
+            }
+        }
+
+
+        showImage(array[2])
+
+        // function clickImage(element) {
+        //     //mình đã nhận được element 
+        //     showImage(element.src)
+        // }
+
+        
+     
+
+
+        
+    </script>
+</body>
+
+</html>

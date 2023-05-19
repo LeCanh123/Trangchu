@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+    .box{
+
+        width:200px;
+        height:200px;
+        display:inline-block;
+        /* float: left; */
+        position: relative;
+        margin:0px 10px 10px 0px;
+        /* background-color: blue; */
+        left:0px;
+        top:0px;
+        
+       
+    }
+    .box img{
+        width:200px;
+        height:200px;
+        margin:0px;
+        padding: 0px;
+        border:1px solid black;
+        display:inline-block;
+    }
+    .title{
+        position: absolute;
+        width: 100%;
+        bottom:0px;
+        display: none;
+    }
+    .title h3{
+        margin:0px 0px 0px 8px;
+        color: white;
+    }
+    .title hr{
+        border:0px;
+        border-bottom:1px solid #ddd;
+    }
+    .title p{
+        margin: 0px 0px 13px 8px;
+        color:#ddd;
+    }
+    .box:hover img{
+        opacity: 0.9;
+    }
+    .box:hover .title{
+        display: inherit;
+    }
+    .giua1{
+        text-align: center;
+       
+    }
+    .giua{
+        margin:0 auto;
+        width:800px;
+        height:250px; 
+        /* overflow-x: scroll; */
+        /* display:flex; */
+        display:inline-block;
+   
+        /* background-color: aqua; */
+        position: relative;
+
+    }
+    .hinhanhchinh{
+        width:600px ;
+        height:400px;
+        margin:0 auto;
+    }
+</style>
+</head>
+<body>
+    <div class="hinhanhchinh">
+    <img src="https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645-t.jpg" id="hinh1" width="600px" height="400px">
+</div>
+<div class="giua1">
+<div style="display:inline-block"><button onclick="trai()">Trái</button></div>
+    <div class="giua" id="bien01">
+        
+<div class="box" style="left:0px;opacity: 0.3;">
+    <img src="https://pis.vn/wp-content/uploads/2021/04/chup-anh-phong-canh-hieu-qua-voi-cac-thu-thuat-can-ban-4_wuzi.jpg">
+
+</div>
+<div class="box" style="left:0px">
+    <img src="https://bizweb.dktcdn.net/100/181/538/articles/20161021185334843.jpg?v=1487852089107">
+
+</div>
+<div class="box" style="left:0px;opacity: 0.3;">
+    <img src="https://data.webnhiepanh.com/wp-content/uploads/2020/11/21105453/phong-canh-1.jpg">
+ 
+<!-- </div>
+<div class="box" style="left:0px">
+    <img src="https://www.dkn.tv/wp-content/uploads/2019/12/mb-4-mountains-photo-under-cc0-e1575456009776.jpg">
+ 
+</div> -->
+
+</div>
+<div style="display:inline-block"><button onclick="phai()">Phải</button></div>
+</div>
+<script>
+let album=["https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645-t.jpg",
+"https://pis.vn/wp-content/uploads/2021/04/chup-anh-phong-canh-hieu-qua-voi-cac-thu-thuat-can-ban-4_wuzi.jpg",
+"https://bizweb.dktcdn.net/100/181/538/articles/20161021185334843.jpg?v=1487852089107",
+"https://data.webnhiepanh.com/wp-content/uploads/2020/11/21105453/phong-canh-1.jpg",
+"https://www.dkn.tv/wp-content/uploads/2019/12/mb-4-mountains-photo-under-cc0-e1575456009776.jpg",
+"https://i0.wp.com/thatnhucuocsong.com.vn/wp-content/uploads/2022/02/anh-thien-nhien.jpg?fit=3738%2C2486&ssl=1",
+"https://img.thuthuatphanmem.vn/uploads/2018/10/20/galaxy-planet-wallpaper_104250493.jpg",
+"https://khoinguonsangtao.vn/wp-content/uploads/2022/09/hinh-nen-galaxy-4k-anime-bau-troi-day-sao.jpg",
+
+]
+
+let a=0;
+let b=0;
+let c=1;
+let d=2;
+
+let a00=document.images;
+a00[0].src=album[c];
+a00[1].src=album[b];
+a00[2].src=album[c];
+a00[3].src=album[d];
+
+
+
+function phai(){
+    if(b==0){
+        b=album.length-1;
+        a00[1].src=album[b];
+       
+    }else if(b<album.length) {
+        b--;
+        a00[1].src=album[b];
+    }
+
+    if(c==0){    
+        c=album.length-1;
+        a00[2].src=album[c];
+        a00[0].src=album[c];
+        
+       
+    }else if(c<album.length){
+        c--;
+        a00[2].src=album[c];
+        a00[0].src=album[c];
+    }
+
+    if(d==0){
+        d=album.length-1;
+        a00[3].src=album[d];
+        
+        
+    }else if(d<album.length){
+        d--; 
+        a00[3].src=album[d];
+   }
+
+    
+}
+
+function trai(){
+
+    if(b==album.length-1){
+        b=0;
+        a00[1].src=album[b]
+        
+    }else if(b<album.length-1) {
+         b++; 
+        a00[1].src=album[b];
+   }
+
+    if(c==album.length-1){ 
+        c=0;  
+        a00[2].src=album[c];
+        a00[0].src=album[c];
+        
+    }else if(c<album.length-1){
+        c++;
+        a00[2].src=album[c];
+        a00[0].src=album[c];
+     }
+
+    if(d==album.length-1){
+        d=0;
+        a00[3].src=album[d]
+        
+    }else if(d<album.length-1){
+        d++;
+        a00[3].src=album[d];
+     }
+        
+}
+
+a00[1].addEventListener('click',()=>{
+    phai();
+}); 
+a00[3].addEventListener('click',()=>{
+    trai();
+});
+document.addEventListener('keydown',(a)=>{
+    if(a.which==37){trai()}
+    if(a.which==39){phai()}
+
+})
+// trai();
+// // trai();
+// phai();
+// phai();
+</script>
+</body>
+</html>
