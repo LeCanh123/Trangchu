@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input id="task" type="text" onchange="addTask()">
+<button onclick="xoa()">Xoá hết -Du Thiên .mp3</button>
+<div id="tasks"></div>
+
+
+    <script>
+       let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+       console.log(tasks);
+
+function addTask() {
+ let task = document.getElementById("task").value;
+ tasks.push(task);
+ localStorage.setItem("tasks", JSON.stringify(tasks));
+ document.getElementById("task").value = "";
+ showTasks();
+}
+
+function showTasks() {
+html1 = "<ul>";
+ for (let i = 0; i < tasks.length; i++) {
+ html1 += "<li>" + tasks[i] + "</li>";
+ }
+ html1 += "</ul>";
+ document.getElementById("tasks").innerHTML = html1;
+}
+
+function xoa(){
+    localStorage.removeItem("tasks");
+    tasks=[];
+    showTasks();
+}
+    </script>
+</body>
+</html>
