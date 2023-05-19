@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.NoiDungCon {
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #077210;
+  width: 80%;
+  position:relative;
+  top:0px;
+  
+}
+
+/* The Close Button */
+.close {
+  color: #f40b0b;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#taskInput:focus{
+    background-color: aqua;
+}
+button:focus{
+    background-color: aqua;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#taskList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#taskList li {
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<h2>Modal Example</h2>
+
+<!-- Trigger/Open The Modal -->
+<button id="OpenModal">Open Modal</button>
+
+<!-- The Modal -->
+<div id="NoiDung" class="modal">
+
+  <!-- Modal content -->
+  <div class="NoiDungCon">
+    <span class="close">&times;</span>
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button id="addBtn">Add</button>     <!--document.getElementById("addBtn").onclick = addTask;  -->
+    <!--  -->
+    <ul id="taskList"></ul>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var NoiDung = document.getElementById("NoiDung");
+
+// Get the button that opens the modal
+var OpenModal = document.getElementById("OpenModal");                    ////////// 01 OpenModal
+
+// Get the <span> element that closes the modal
+var close1 = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+OpenModal.onclick = function() {                                     ////////// 02 OpenModal click
+    NoiDung.style.display = "block";
+  document.getElementById("addBtn").onclick = addTask;
+
+  // clearInterval(chay);
+  let noiDungCon=document.getElementsByClassName("NoiDungCon");
+  let chay = setInterval(chayXuong,10);
+  let dem=0;
+  function chayXuong(){
+    console.log(dem);
+if(dem==500){
+  clearInterval(chay);
+}
+dem++;
+ noiDungCon[0].style.top=dem+'px';
+  }
+}
+
+// When the user clicks on <span> (x), close the modal
+    close1.onclick = function() {
+        NoiDung.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == NoiDung) {
+    NoiDung.style.display = "none";
+  }
+}
+
+// Function to add a new task
+function addTask() {
+  var taskInput = document.getElementById("taskInput");
+  var task = taskInput.value;
+
+  if (task.trim() !== "") {
+    // Create a new list item
+    var li = document.createElement("li");
+    var textNode = document.createTextNode(task);
+    li.appendChild(textNode);
+    document.getElementById("taskList").appendChild(li);
+
+    // Clear the input field
+    taskInput.value = "";
+  }
+}
+</script>
+
+</body>
+</html>
